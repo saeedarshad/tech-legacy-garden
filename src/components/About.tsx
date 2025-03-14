@@ -6,7 +6,7 @@ type ExperienceItem = {
   title: string;
   company: string;
   period: string;
-  description: string;
+  description: string[];  // Changed from string to string[] to support bullet points
   icon?: React.ReactNode;
 };
 
@@ -18,21 +18,38 @@ const About = () => {
       title: "Senior/Lead Software Engineer",
       company: "Ignis Health",
       period: "Jan 2019 - Present",
-      description: "Created a dynamic Angular-based editor allowing users to modify interfaces and save configurations. Integrated ChatGPT for automated summaries of Telehealth notes. Deployed Sentry for error monitoring and Celery for task management, boosting user satisfaction by 30%. Mentored junior team members, improving code quality and team productivity by 30%.",
+      description: [
+        "Created a dynamic Angular-based editor allowing users to change the interface from the application itself and save configurations, with an editor on the left panel and live site preview on the right side.",
+        "Integrated ChatGPT-Turbo3.5 to provide automated summaries of Telehealth service notes, streamlining information retrieval for users.",
+        "Integrated Google Analytics, Mailchimp, Stripe, and Klaviyo, enhancing site functionality and user engagement; drove a 25% increase in customer retention and boosted transactional efficiency by 40%.",
+        "Deployed Sentry in Angular project for real-time error monitoring, cutting bug detection time by 50%, and leveraged Celery for task management, ensuring seamless application performance and boosting user satisfaction rate by 30%.",
+        "Mentored junior team members by providing guidance on best practices, conducting code reviews, and offering professional development opportunities, resulting in a 30% improvement in code quality and team productivity."
+      ],
       icon: <Brain size={16} />
     },
     {
       title: "Senior Software Engineer (Python/Django/Angular)",
       company: "Medi Know",
       period: "Dec 2024 - Present",
-      description: "Developing B2B Licensing features for a medical education platform, collaborating with doctor-founders. Integrated UI improvements in Angular and optimized Django querysets for significant performance gains.",
+      description: [
+        "Senior Full Stack Developer at Medi Know, an education platform for medical students in Germany, collaborating closely with doctor-founders to gather and implement requirements.",
+        "Developing key B2B Licensing features, improving platform capabilities and enabling efficient management for business clients.",
+        "Integrated picture zoom controls and performed multiple UI/UX improvements in Angular to elevate the user experience.",
+        "Optimized Django querysets to significantly improve database efficiency and system performance."
+      ],
       icon: <Code size={16} />
     },
     {
       title: "Senior Software Engineer - Angular (Consultant)",
       company: "Nomor AB",
       period: "Jul 2021 - Aug 2023",
-      description: "Designed and implemented a dynamic statistics module using Highcharts. Upgraded the product's Angular framework to the latest version. Enhanced development processes and improved coding techniques. Developed administration modules and upgraded UI for mobile responsiveness.",
+      description: [
+        "Responsible for designing and implementing a dynamic statistics module for the product. This module will utilize Highcharts to provide visually compelling and insightful data representation.",
+        "Upgrading the product's Angular framework to the latest version. This upgrade is crucial for ensuring that the product remains technologically current and takes advantage of the most recent features and enhancements.",
+        "Responsibilities is to enhance the overall development process and improve coding techniques. By doing so, they aim to optimize efficiency and raise the standard of code quality within the development team.",
+        "Played a pivotal role in developing administration modules. These modules are essential for effective product management and user control, ensuring the product's functionality meets administrative needs.",
+        "Upgrade is focused on making the UI more user-friendly and ensuring it is responsive across various devices, including mobile platforms."
+      ],
       icon: <Layers size={16} />
     }
   ];
@@ -117,7 +134,13 @@ const About = () => {
                     <span className="text-sm text-muted-foreground">{item.period}</span>
                   </div>
                   <p className="text-muted-foreground mb-2">{item.company}</p>
-                  <p className="text-sm">{item.description}</p>
+                  
+                  {/* Changed: Display description as bullet points instead of paragraph */}
+                  <ul className="text-sm list-disc ml-4 space-y-1">
+                    {item.description.map((bullet, i) => (
+                      <li key={i}>{bullet}</li>
+                    ))}
+                  </ul>
                 </div>
               ))}
             </div>
