@@ -90,7 +90,7 @@ const About = () => {
               <div className="grid grid-cols-2 gap-4 mt-6">
                 <div>
                   <h4 className="font-semibold">Location:</h4>
-                  <p className="text-muted-foreground">San Francisco, CA</p>
+                  <p className="text-muted-foreground">Remote</p>
                 </div>
                 <div>
                   <h4 className="font-semibold">Experience:</h4>
