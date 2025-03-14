@@ -3,33 +3,39 @@ import React, { useEffect, useRef } from 'react';
 import { ArrowRight, Github, Linkedin, Mail } from 'lucide-react';
 
 const Hero = () => {
-  const titleRef = useRef<HTMLHeadingElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('animate-fade-in');
+            const elements = entry.target.querySelectorAll('.animate-on-scroll');
+            elements.forEach((element, index) => {
+              (element as HTMLElement).style.animationDelay = `${0.2 * index}s`;
+              element.classList.add('animate-fade-in');
+              // Important: Remove the observer once animation is applied
+              observer.unobserve(entry.target);
+            });
           }
         });
       },
       { threshold: 0.1 }
     );
 
-    if (titleRef.current) {
-      observer.observe(titleRef.current);
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
     }
 
     return () => {
-      if (titleRef.current) {
-        observer.unobserve(titleRef.current);
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
       }
     };
   }, []);
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center pt-16 overflow-hidden">
+    <section id="home" ref={sectionRef} className="relative min-h-screen flex items-center pt-16 overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-background"></div>
@@ -40,7 +46,7 @@ const Hero = () => {
       <div className="container mx-auto px-4 pt-20">
         <div className="max-w-4xl mx-auto">
           {/* Small intro tag */}
-          <div className="inline-block animate-fade-in opacity-0" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
+          <div className="inline-block animate-on-scroll opacity-0">
             <span className="px-3 py-1 text-sm font-medium bg-primary/10 rounded-full">
               Senior Software Engineer
             </span>
@@ -48,25 +54,21 @@ const Hero = () => {
 
           {/* Main heading */}
           <h1 
-            ref={titleRef}
-            className="opacity-0 mt-6 text-4xl md:text-6xl lg:text-7xl font-display font-bold tracking-tight"
-            style={{ animationDelay: '0.4s', animationFillMode: 'forwards' }}
+            className="mt-6 text-4xl md:text-6xl lg:text-7xl font-display font-bold tracking-tight animate-on-scroll opacity-0"
           >
             Turning complex problems into elegant solutions
           </h1>
 
           {/* Subtitle */}
           <p 
-            className="mt-6 text-xl md:text-2xl text-muted-foreground opacity-0 animate-fade-in"
-            style={{ animationDelay: '0.6s', animationFillMode: 'forwards' }}
+            className="mt-6 text-xl md:text-2xl text-muted-foreground animate-on-scroll opacity-0"
           >
             With 6 years of development experience in Python/Django and Angular, I build robust, scalable applications that deliver exceptional user experiences.
           </p>
 
           {/* CTA buttons */}
           <div 
-            className="mt-8 flex flex-wrap gap-4 opacity-0 animate-fade-in"
-            style={{ animationDelay: '0.8s', animationFillMode: 'forwards' }}
+            className="mt-8 flex flex-wrap gap-4 animate-on-scroll opacity-0"
           >
             <a 
               href="#projects" 
@@ -84,8 +86,7 @@ const Hero = () => {
 
           {/* Social links */}
           <div 
-            className="mt-12 flex items-center space-x-6 opacity-0 animate-fade-in"
-            style={{ animationDelay: '1s', animationFillMode: 'forwards' }}
+            className="mt-12 flex items-center space-x-6 animate-on-scroll opacity-0"
           >
             <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
               <Github className="h-6 w-6" />
@@ -104,7 +105,7 @@ const Hero = () => {
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center opacity-0 animate-fade-in" style={{ animationDelay: '1.2s', animationFillMode: 'forwards' }}>
+      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-on-scroll opacity-0">
         <span className="text-sm text-muted-foreground mb-2">Scroll Down</span>
         <div className="w-0.5 h-12 bg-gradient-to-b from-muted-foreground to-transparent"></div>
       </div>

@@ -38,11 +38,13 @@ const About = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const children = entry.target.querySelectorAll('.animate-on-scroll');
-            children.forEach((child, index) => {
-              (child as HTMLElement).style.animationDelay = `${0.2 * (index + 1)}s`;
-              child.classList.add('animate-fade-in');
+            const elements = entry.target.querySelectorAll('.animate-on-scroll');
+            elements.forEach((element, index) => {
+              (element as HTMLElement).style.animationDelay = `${0.2 * index}s`;
+              element.classList.add('animate-fade-in');
             });
+            // Only unobserve if all elements have been animated
+            observer.unobserve(entry.target);
           }
         });
       },

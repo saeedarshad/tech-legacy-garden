@@ -41,10 +41,10 @@ const Skills = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const children = entry.target.querySelectorAll('.animate-on-scroll');
-            children.forEach((child, index) => {
-              (child as HTMLElement).style.animationDelay = `${0.1 * (index + 1)}s`;
-              child.classList.add('animate-fade-in');
+            const elements = entry.target.querySelectorAll('.animate-on-scroll');
+            elements.forEach((element, index) => {
+              (element as HTMLElement).style.animationDelay = `${0.1 * index}s`;
+              element.classList.add('animate-fade-in');
             });
 
             // After a delay, animate the skill bars
@@ -54,6 +54,9 @@ const Skills = () => {
                 (bar as HTMLElement).style.width = bar.getAttribute('data-width') || '0%';
               });
             }, 500);
+            
+            // Only unobserve after animation is complete
+            observer.unobserve(entry.target);
           }
         });
       },
