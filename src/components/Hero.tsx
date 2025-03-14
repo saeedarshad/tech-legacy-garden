@@ -48,7 +48,7 @@ const Hero = () => {
           {/* Small intro tag */}
           <div className="inline-block animate-on-scroll opacity-0">
             <span className="px-3 py-1 text-sm font-medium bg-primary/10 rounded-full">
-              Senior Software Engineer
+              Saeed Arshad - Senior Software Engineer
             </span>
           </div>
 
@@ -56,14 +56,14 @@ const Hero = () => {
           <h1 
             className="mt-6 text-4xl md:text-6xl lg:text-7xl font-display font-bold tracking-tight animate-on-scroll opacity-0"
           >
-            Turning complex problems into elegant solutions
+            Building scalable AI-powered solutions
           </h1>
 
           {/* Subtitle */}
           <p 
             className="mt-6 text-xl md:text-2xl text-muted-foreground animate-on-scroll opacity-0"
           >
-            With 6 years of development experience in Python/Django and Angular, I build robust, scalable applications that deliver exceptional user experiences.
+            With 6 years of experience in Python/Django, Angular, AWS, and AI technologies, I create robust applications that transform complex challenges into elegant, intelligent solutions.
           </p>
 
           {/* CTA buttons */}

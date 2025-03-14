@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from 'react';
 
 type Skill = {
@@ -22,12 +23,28 @@ const Skills = () => {
     { name: "Django", level: 90, icon: "devicon-django-plain" },
     { name: "PostgreSQL", level: 85, icon: "devicon-postgresql-plain" },
     { name: "RESTful APIs", level: 90, icon: "devicon-nodejs-plain" },
-    { name: "Docker", level: 75, icon: "devicon-docker-plain" }
+    { name: "Docker", level: 85, icon: "devicon-docker-plain" }
+  ];
+
+  const awsSkills: Skill[] = [
+    { name: "AWS EC2", level: 90, icon: "devicon-amazonwebservices-plain" },
+    { name: "AWS Lambda", level: 85, icon: "devicon-amazonwebservices-plain" },
+    { name: "AWS S3", level: 90, icon: "devicon-amazonwebservices-plain" },
+    { name: "AWS SageMaker", level: 80, icon: "devicon-amazonwebservices-plain" },
+    { name: "AWS CloudFormation", level: 75, icon: "devicon-amazonwebservices-plain" }
+  ];
+
+  const aiSkills: Skill[] = [
+    { name: "Machine Learning", level: 85, icon: "devicon-tensorflow-plain" },
+    { name: "NLP", level: 80, icon: "devicon-python-plain" },
+    { name: "Computer Vision", level: 75, icon: "devicon-python-plain" },
+    { name: "Deep Learning", level: 80, icon: "devicon-tensorflow-plain" },
+    { name: "Data Analysis", level: 85, icon: "devicon-pandas-original" }
   ];
 
   const otherSkills: string[] = [
     "Git/GitHub", "CI/CD", "Agile/Scrum", "Unit Testing", "System Design", 
-    "AWS", "Performance Optimization", "Team Leadership"
+    "AWS", "Performance Optimization", "Team Leadership", "MLOps", "Kubernetes"
   ];
 
   useEffect(() => {
@@ -81,7 +98,7 @@ const Skills = () => {
         <div className="text-center mb-16">
           <h2 className="section-title animate-on-scroll opacity-0">Skills & Expertise</h2>
           <p className="section-subtitle animate-on-scroll opacity-0 max-w-2xl mx-auto">
-            My technical skills and areas of expertise developed over 6+ years in software engineering.
+            My technical skills and areas of expertise developed over 6+ years in software engineering, cloud computing, and artificial intelligence.
           </p>
         </div>
 
@@ -122,6 +139,64 @@ const Skills = () => {
             </h3>
             <div className="space-y-6">
               {backendSkills.map((skill, index) => (
+                <div key={index}>
+                  <div className="flex justify-between items-center mb-2">
+                    <div className="flex items-center">
+                      <i className={`${skill.icon} text-xl mr-2`}></i>
+                      <span className="font-medium">{skill.name}</span>
+                    </div>
+                    <span className="text-sm text-muted-foreground">{skill.level}%</span>
+                  </div>
+                  <div className="h-2 bg-secondary rounded-full overflow-hidden">
+                    <div 
+                      className="skill-bar-progress h-full bg-primary rounded-full transition-all duration-1000 ease-out"
+                      data-width={`${skill.level}%`}
+                      style={{ width: '0%' }}
+                    ></div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-10 mt-16">
+          {/* AWS Skills */}
+          <div className="animate-on-scroll opacity-0">
+            <h3 className="text-2xl font-bold mb-6 flex items-center">
+              <span className="mr-2">AWS Cloud</span>
+              <div className="h-px flex-grow bg-border"></div>
+            </h3>
+            <div className="space-y-6">
+              {awsSkills.map((skill, index) => (
+                <div key={index}>
+                  <div className="flex justify-between items-center mb-2">
+                    <div className="flex items-center">
+                      <i className={`${skill.icon} text-xl mr-2`}></i>
+                      <span className="font-medium">{skill.name}</span>
+                    </div>
+                    <span className="text-sm text-muted-foreground">{skill.level}%</span>
+                  </div>
+                  <div className="h-2 bg-secondary rounded-full overflow-hidden">
+                    <div 
+                      className="skill-bar-progress h-full bg-primary rounded-full transition-all duration-1000 ease-out"
+                      data-width={`${skill.level}%`}
+                      style={{ width: '0%' }}
+                    ></div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* AI Skills */}
+          <div className="animate-on-scroll opacity-0">
+            <h3 className="text-2xl font-bold mb-6 flex items-center">
+              <span className="mr-2">AI & Machine Learning</span>
+              <div className="h-px flex-grow bg-border"></div>
+            </h3>
+            <div className="space-y-6">
+              {aiSkills.map((skill, index) => (
                 <div key={index}>
                   <div className="flex justify-between items-center mb-2">
                     <div className="flex items-center">
