@@ -15,32 +15,25 @@ const About = () => {
   
   const experienceItems: ExperienceItem[] = [
     {
-      title: "Senior Software Engineer",
-      company: "Tech Solutions Inc.",
-      period: "2020 - Present",
-      description: "Leading development of AI-powered enterprise applications using Python/Django, Angular, and AWS. Designing and implementing machine learning pipelines for data processing and predictive analytics.",
-      icon: <Layers size={16} />
-    },
-    {
-      title: "ML Engineer",
-      company: "AI Innovations",
-      period: "2019 - 2020",
-      description: "Developed machine learning models and AI solutions for business process automation. Designed and implemented NLP pipelines and computer vision systems using AWS SageMaker and Lambda.",
+      title: "Senior/Lead Software Engineer",
+      company: "Ignis Health",
+      period: "Jan 2019 - Present",
+      description: "Created a dynamic Angular-based editor allowing users to modify interfaces and save configurations. Integrated ChatGPT for automated summaries of Telehealth notes. Deployed Sentry for error monitoring and Celery for task management, boosting user satisfaction by 30%. Mentored junior team members, improving code quality and team productivity by 30%.",
       icon: <Brain size={16} />
     },
     {
-      title: "Full Stack Developer",
-      company: "Digital Innovations",
-      period: "2018 - 2019",
-      description: "Developed and maintained multiple web applications using Django and Angular. Implemented RESTful APIs and optimized database performance for high-traffic applications.",
+      title: "Senior Software Engineer (Python/Django/Angular)",
+      company: "Medi Know",
+      period: "Dec 2024 - Present",
+      description: "Developing B2B Licensing features for a medical education platform, collaborating with doctor-founders. Integrated UI improvements in Angular and optimized Django querysets for significant performance gains.",
       icon: <Code size={16} />
     },
     {
-      title: "Cloud Engineer",
-      company: "AWS Solutions",
-      period: "2017 - 2018",
-      description: "Designed and implemented AWS cloud infrastructure for enterprise applications. Experience with EC2, S3, Lambda, SageMaker, and other AWS services for scalable, reliable deployments.",
-      icon: <Cloud size={16} />
+      title: "Senior Software Engineer - Angular (Consultant)",
+      company: "Nomor AB",
+      period: "Jul 2021 - Aug 2023",
+      description: "Designed and implemented a dynamic statistics module using Highcharts. Upgraded the product's Angular framework to the latest version. Enhanced development processes and improved coding techniques. Developed administration modules and upgraded UI for mobile responsiveness.",
+      icon: <Layers size={16} />
     }
   ];
 
