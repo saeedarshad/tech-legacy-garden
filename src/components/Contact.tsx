@@ -132,8 +132,8 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="font-medium">Email</h4>
-                    <a href="mailto:m.saeedarshad@gmail.com" className="text-muted-foreground hover:text-primary">
-                      m.saeedarshad@gmail.com
+                    <a href="mailto:m.saeedarshad95@gmail.com" className="text-muted-foreground hover:text-primary">
+                      m.saeedarshad95@gmail.com
                     </a>
                   </div>
                 </div>
@@ -145,7 +145,7 @@ const Contact = () => {
                   <div>
                     <h4 className="font-medium">Phone</h4>
                     <a href="tel:+11234567890" className="text-muted-foreground hover:text-primary">
-                      +1 (123) 456-7890
+                      +92 (335) 4404002
                     </a>
                   </div>
                 </div>
@@ -157,7 +157,7 @@ const Contact = () => {
                   <div>
                     <h4 className="font-medium">Location</h4>
                     <p className="text-muted-foreground">
-                      San Francisco, California, USA
+                      Remote
                     </p>
                   </div>
                 </div>

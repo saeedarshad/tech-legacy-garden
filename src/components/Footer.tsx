@@ -16,7 +16,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row items-center justify-between mb-8">
           {/* Logo */}
           <a href="#home" className="font-display text-xl font-bold mb-4 md:mb-0">
-            <span className="text-primary">&lt;/&gt;</span> <span>Portfolio</span>
+            <span className="text-primary">&lt;/&gt;</span> <span>Saeed's Portfolio</span>
           </a>
 
           {/* Navigation */}
@@ -30,15 +30,15 @@ const Footer = () => {
 
           {/* Social Links */}
           <div className="flex items-center space-x-4 mt-4 md:mt-0">
-            <a href="#" className="p-2 text-muted-foreground hover:text-primary transition-colors">
+            <a href="https://github.com/saeedarshad" className="p-2 text-muted-foreground hover:text-primary transition-colors" target='_blank'>
               <Github className="h-5 w-5" />
               <span className="sr-only">GitHub</span>
             </a>
-            <a href="#" className="p-2 text-muted-foreground hover:text-primary transition-colors">
+            <a href="https://www.linkedin.com/in/saeedarshadd/" className="p-2 text-muted-foreground hover:text-primary transition-colors" target='_blank'>
               <Linkedin className="h-5 w-5" />
               <span className="sr-only">LinkedIn</span>
             </a>
-            <a href="#" className="p-2 text-muted-foreground hover:text-primary transition-colors">
+            <a href="mailto:m.saeedarshad95@gmail.com" className="p-2 text-muted-foreground hover:text-primary transition-colors">
               <Mail className="h-5 w-5" />
               <span className="sr-only">Email</span>
             </a>

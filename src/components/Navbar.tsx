@@ -43,7 +43,7 @@ const Navbar = () => {
         {/* Logo */}
         <a href="#home" className="font-display text-xl font-bold">
           <span className="sr-only">Developer Portfolio</span>
-          <span className="text-primary">&lt;/&gt;</span> <span>Portfolio</span>
+          <span className="text-primary">&lt;/&gt;</span> <span>Saeed's Portfolio</span>
         </a>
 
         {/* Desktop Navigation */}
