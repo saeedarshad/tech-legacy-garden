@@ -1,6 +1,7 @@
-
 import React, { useEffect, useRef } from 'react';
 import { ArrowRight, Github, Linkedin, Mail } from 'lucide-react';
+import AnimatedBackground from './AnimatedBackground';
+import { motion } from 'framer-motion';
 
 const Hero = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -48,15 +49,9 @@ const Hero = () => {
 
   return (
     <section id="home" ref={sectionRef} className="relative min-h-screen flex items-center pt-16 overflow-hidden">
-      {/* Enhanced background decorations with parallax effect */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-background"></div>
-        <div className="bg-decoration absolute top-1/4 right-1/4 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
-        <div className="bg-decoration absolute bottom-1/3 left-1/3 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl"></div>
-        <div className="bg-decoration absolute top-1/3 left-1/4 w-40 h-40 bg-purple-500/5 rounded-full blur-3xl"></div>
-        <div className="bg-decoration absolute bottom-1/4 right-1/3 w-56 h-56 bg-green-500/5 rounded-full blur-3xl"></div>
-      </div>
-
+      {/* Add the animated background */}
+      <AnimatedBackground />
+      
       <div className="container mx-auto px-4 pt-20">
         <div className="max-w-4xl mx-auto">
           {/* Improved intro tag with shimmer effect */}
@@ -68,33 +63,43 @@ const Hero = () => {
           </div>
 
           {/* Enhanced heading with text reveal animation */}
-          <h1 
+          <motion.h1 
             className="mt-6 text-4xl md:text-6xl lg:text-7xl font-display font-bold tracking-tight animate-on-scroll"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <span className="inline-block overflow-hidden relative">
-              <span className="inline-block transform transition-transform duration-700">Building</span>
-            </span>{" "}
-            <span className="inline-block overflow-hidden relative">
-              <span className="inline-block transform transition-transform duration-700">scalable</span>
-            </span>{" "}
-            <span className="inline-block overflow-hidden relative">
-              <span className="inline-block transform transition-transform duration-700">AI-powered</span>
-            </span>{" "}
-            <span className="inline-block overflow-hidden relative">
-              <span className="inline-block transform transition-transform duration-700">solutions</span>
-            </span>
-          </h1>
+            <motion.span 
+              className="inline-block bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-300 dark:from-white dark:to-gray-400"
+              animate={{ 
+                backgroundPosition: ['0% center', '100% center', '0% center'],
+              }}
+              transition={{ 
+                duration: 10, 
+                repeat: Infinity,
+                ease: "linear" 
+              }}
+            >
+              Building scalable AI-powered solutions
+            </motion.span>
+          </motion.h1>
 
           {/* Subtle fade-in subtitle */}
-          <p 
+          <motion.p 
             className="mt-6 text-xl md:text-2xl text-muted-foreground animate-on-scroll"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
           >
             With 6 years of experience in Python/Django, Angular, AWS, and AI technologies, I create robust applications that transform complex challenges into elegant, intelligent solutions.
-          </p>
+          </motion.p>
 
           {/* Animated CTA buttons */}
-          <div 
+          <motion.div 
             className="mt-8 flex flex-wrap gap-4 animate-on-scroll"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
           >
             <a 
               href="#projects" 
@@ -110,11 +115,14 @@ const Hero = () => {
               <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-all duration-700 ease-in-out"></span>
               <span className="relative z-10">Contact Me</span>
             </a>
-          </div>
+          </motion.div>
 
           {/* Social links with hover animations */}
-          <div 
+          <motion.div 
             className="mt-12 flex items-center space-x-6 animate-on-scroll"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
           >
             <a href="#" className="text-muted-foreground hover:text-primary transition-colors transform hover:scale-110 transition-transform duration-200">
               <Github className="h-6 w-6" />
@@ -128,15 +136,31 @@ const Hero = () => {
               <Mail className="h-6 w-6" />
               <span className="sr-only">Email</span>
             </a>
-          </div>
+          </motion.div>
         </div>
       </div>
 
       {/* Animated scroll indicator */}
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-on-scroll">
+      <motion.div 
+        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, delay: 1 }}
+      >
         <span className="text-sm text-muted-foreground mb-2">Scroll Down</span>
-        <div className="w-0.5 h-12 bg-gradient-to-b from-muted-foreground to-transparent animate-pulse-slow"></div>
-      </div>
+        <motion.div 
+          className="w-0.5 h-12 bg-gradient-to-b from-muted-foreground to-transparent"
+          animate={{ 
+            scaleY: [0.5, 1, 0.5],
+            opacity: [0.3, 1, 0.3],
+          }}
+          transition={{ 
+            duration: 2, 
+            repeat: Infinity,
+            ease: "easeInOut" 
+          }}
+        />
+      </motion.div>
     </section>
   );
 };

@@ -168,6 +168,28 @@
   }
 }
 
+/* Matrix effect animation */
+@keyframes matrixRain {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+.matrix-character {
+  animation: matrixRain 2s linear infinite;
+}
+
 /* Advanced animations */
 @keyframes float {
   0%, 100% {
