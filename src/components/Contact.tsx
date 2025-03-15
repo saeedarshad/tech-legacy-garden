@@ -30,7 +30,7 @@ const formSchema = z.object({
 // EmailJS configuration
 // These are public keys that can be exposed in the frontend
 const EMAIL_SERVICE_ID = "service_6p19t2f"; // Replace with your EmailJS service ID
-const EMAIL_TEMPLATE_ID = "E_SVlju4mOT7kb111"; // Replace with your EmailJS template ID
+const EMAIL_TEMPLATE_ID = "template_phjqwjl"; // Replace with your EmailJS template ID
 const EMAIL_PUBLIC_KEY = "E_SVlju4mOT7kb111"; // Replace with your EmailJS public key
 
 const Contact = () => {
