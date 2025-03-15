@@ -53,7 +53,7 @@ const Contact = () => {
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     try {
       const templateParams = {
-        to_email: "m.saeedarshad@gmail.com",
+        to_email: "m.saeedarshad95@gmail.com",
         from_name: data.name,
         from_email: data.email,
         subject: data.subject,
