@@ -101,7 +101,7 @@
 /* Custom utility classes */
 @layer components {
   .glass-card {
-    @apply bg-white/80 dark:bg-black/80 backdrop-blur-md border border-white/20 dark:border-black/20 shadow-sm;
+    @apply bg-white/80 dark:bg-black/80 backdrop-blur-md border border-white/20 dark:border-black/20 shadow-sm transition-all duration-300 hover:shadow-md hover:border-white/30 dark:hover:border-white/10;
   }
   
   .nav-link {
@@ -109,11 +109,11 @@
   }
   
   .section-title {
-    @apply text-3xl sm:text-4xl font-display font-bold tracking-tight;
+    @apply text-3xl sm:text-4xl font-display font-bold tracking-tight relative inline-block after:content-[''] after:absolute after:-bottom-2 after:left-1/2 after:w-12 after:h-1 after:bg-primary/50 after:rounded-full after:transform after:-translate-x-1/2;
   }
   
   .section-subtitle {
-    @apply text-lg sm:text-xl text-muted-foreground mt-2;
+    @apply text-lg sm:text-xl text-muted-foreground mt-6;
   }
   
   .section-container {
@@ -121,11 +121,21 @@
   }
   
   .skill-card {
-    @apply glass-card p-6 rounded-xl flex flex-col items-center justify-center transition-all duration-300 hover:translate-y-[-5px];
+    @apply glass-card p-6 rounded-xl flex flex-col items-center justify-center transition-all duration-500 hover:translate-y-[-10px] hover:shadow-lg;
   }
   
   .project-card {
-    @apply glass-card rounded-xl overflow-hidden transition-all duration-300 hover:translate-y-[-5px] border;
+    @apply glass-card rounded-xl overflow-hidden transition-all duration-500 hover:shadow-xl border;
+  }
+  
+  /* Enhanced button styling */
+  .btn-primary {
+    @apply relative overflow-hidden inline-flex items-center justify-center px-6 py-3 bg-primary text-primary-foreground font-medium rounded-md transition-all hover:bg-primary/90 hover:shadow-lg after:absolute after:inset-0 after:w-full after:h-full after:bg-white/20 after:transform after:-translate-x-full after:skew-x-12 hover:after:animate-shine;
+  }
+  
+  /* Glowing effect for cards */
+  .glow-on-hover {
+    @apply relative after:absolute after:inset-0 after:rounded-xl after:opacity-0 after:transition-opacity after:duration-500 after:bg-gradient-to-r after:from-primary/0 after:via-primary/30 after:to-primary/0 hover:after:opacity-100;
   }
 }
 
@@ -137,6 +147,16 @@
   animation-timing-function: ease-out;
 }
 
+/* Animation for shine effect */
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) skewX(-15deg);
+  }
+  100% {
+    transform: translateX(100%) skewX(-15deg);
+  }
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -146,6 +166,50 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* Advanced animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(0.95);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse 3s infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 3s infinite;
 }
 
 /* Scroll behavior */
@@ -162,4 +226,21 @@ html {
 .no-scrollbar {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
+}
+
+/* 3D transform effects */
+.perspective {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.rotate-y {
+  transform: rotateY(180deg);
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
 }
