@@ -29,9 +29,9 @@ const formSchema = z.object({
 
 // EmailJS configuration
 // These are public keys that can be exposed in the frontend
-const EMAIL_SERVICE_ID = "service_qj5uh0r"; // Replace with your EmailJS service ID
-const EMAIL_TEMPLATE_ID = "template_rpkjw78"; // Replace with your EmailJS template ID
-const EMAIL_PUBLIC_KEY = "Qwr4tymQ4NM-Pbgc5"; // Replace with your EmailJS public key
+const EMAIL_SERVICE_ID = "service_6p19t2f"; // Replace with your EmailJS service ID
+const EMAIL_TEMPLATE_ID = "service_6p19t2f"; // Replace with your EmailJS template ID
+const EMAIL_PUBLIC_KEY = "E_SVlju4mOT7kb111"; // Replace with your EmailJS public key
 
 const Contact = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -53,7 +53,7 @@ const Contact = () => {
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     try {
       const templateParams = {
-        to_email: "m.saeedarshad95@gmail.com", // Updated to the correct email
+        to_email: "saeedarshadd9@gmail.com@gmail.com", // Updated to the correct email
         from_name: data.name,
         from_email: data.email,
         subject: data.subject,
