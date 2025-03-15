@@ -8,6 +8,7 @@ import Skills from '../components/Skills';
 import Projects from '../components/Projects';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
+import GradientBackground from '../components/GradientBackground';
 
 const Index = () => {
   const [loading, setLoading] = useState(true);
@@ -51,8 +52,9 @@ const Index = () => {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
           >
+            <GradientBackground variant="dark" />
             <motion.div
-              className="flex flex-col items-center"
+              className="flex flex-col items-center relative z-10"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -102,22 +104,37 @@ const Index = () => {
         ) : (
           <motion.div 
             key="content"
-            className="min-h-screen flex flex-col"
+            className="min-h-screen flex flex-col relative"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
           >
-            <motion.header variants={itemVariants}>
+            <motion.header variants={itemVariants} className="relative z-20">
               <Navbar />
             </motion.header>
             <motion.main className="flex-grow" variants={itemVariants}>
               <Hero />
               <About />
-              <Skills />
-              <Projects />
-              <Contact />
+              <section id="skills" className="relative py-20">
+                <GradientBackground variant="tertiary" />
+                <div className="relative z-10">
+                  <Skills />
+                </div>
+              </section>
+              <section id="projects" className="relative py-20">
+                <GradientBackground variant="primary" />
+                <div className="relative z-10">
+                  <Projects />
+                </div>
+              </section>
+              <section id="contact" className="relative py-20">
+                <GradientBackground variant="secondary" />
+                <div className="relative z-10">
+                  <Contact />
+                </div>
+              </section>
             </motion.main>
-            <motion.footer variants={itemVariants}>
+            <motion.footer variants={itemVariants} className="relative z-10">
               <Footer />
             </motion.footer>
           </motion.div>

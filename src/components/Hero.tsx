@@ -1,7 +1,8 @@
+
 import React, { useEffect, useRef } from 'react';
 import { ArrowRight, Github, Linkedin, Mail } from 'lucide-react';
-import AnimatedBackground from './AnimatedBackground';
 import { motion } from 'framer-motion';
+import GradientBackground from './GradientBackground';
 
 const Hero = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -27,16 +28,6 @@ const Hero = () => {
         
         observer.observe(element);
       });
-      
-      // Add parallax effect to decorative elements
-      const decorations = sectionRef.current?.querySelectorAll('.bg-decoration');
-      decorations?.forEach(element => {
-        window.addEventListener('mousemove', (e) => {
-          const x = e.clientX / window.innerWidth;
-          const y = e.clientY / window.innerHeight;
-          (element as HTMLElement).style.transform = `translate(${x * 30}px, ${y * 30}px)`;
-        });
-      });
     };
 
     // Run animation after component mount
@@ -49,8 +40,8 @@ const Hero = () => {
 
   return (
     <section id="home" ref={sectionRef} className="relative min-h-screen flex items-center pt-16 overflow-hidden">
-      {/* Add the animated background */}
-      <AnimatedBackground />
+      {/* Replace AnimatedBackground with GradientBackground */}
+      <GradientBackground variant="primary" />
       
       <div className="container mx-auto px-4 pt-20">
         <div className="max-w-4xl mx-auto">

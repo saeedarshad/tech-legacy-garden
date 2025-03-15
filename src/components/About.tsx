@@ -1,6 +1,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import { Code, Users, Layers, Cloud, Brain } from 'lucide-react';
+import GradientBackground from './GradientBackground';
 
 type ExperienceItem = {
   title: string;
@@ -84,8 +85,11 @@ const About = () => {
   }, []);
 
   return (
-    <section id="about" ref={sectionRef} className="py-20 bg-secondary/30">
-      <div className="section-container">
+    <section id="about" ref={sectionRef} className="relative py-20">
+      {/* Add the gradient background */}
+      <GradientBackground variant="secondary" />
+      
+      <div className="section-container relative z-10">
         <div className="text-center mb-16">
           <h2 className="section-title animate-on-scroll opacity-0">About Me</h2>
           <p className="section-subtitle animate-on-scroll opacity-0 max-w-2xl mx-auto">
@@ -96,7 +100,7 @@ const About = () => {
         <div className="grid md:grid-cols-12 gap-8 items-center">
           {/* Personal Info */}
           <div className="md:col-span-5">
-            <div className="glass-card rounded-xl p-8 animate-on-scroll opacity-0">
+            <div className="glass-panel rounded-xl p-8 animate-on-scroll opacity-0">
               <h3 className="text-2xl font-bold mb-4">My Journey</h3>
               <p className="text-muted-foreground mb-6">
                 With 6 years of experience in software development, I've cultivated expertise in Python/Django, Angular, AWS cloud services, and AI/ML technologies. My passion lies in building scalable, intelligent applications that solve real-world problems efficiently.
@@ -124,7 +128,7 @@ const About = () => {
               {experienceItems.map((item, index) => (
                 <div 
                   key={index}
-                  className="relative glass-card rounded-xl p-6 pl-8 animate-on-scroll opacity-0"
+                  className="relative glass-panel rounded-xl p-6 pl-8 animate-on-scroll opacity-0"
                 >
                   <div className="absolute top-6 left-[-16px] w-8 h-8 rounded-full bg-primary flex items-center justify-center text-primary-foreground">
                     {item.icon || <Users size={16} />}
@@ -135,7 +139,7 @@ const About = () => {
                   </div>
                   <p className="text-muted-foreground mb-2">{item.company}</p>
                   
-                  {/* Changed: Display description as bullet points instead of paragraph */}
+                  {/* Display description as bullet points */}
                   <ul className="text-sm list-disc ml-4 space-y-1">
                     {item.description.map((bullet, i) => (
                       <li key={i}>{bullet}</li>
