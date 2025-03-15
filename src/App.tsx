@@ -34,6 +34,11 @@ const App = () => {
   // Set dark mode by default
   useEffect(() => {
     document.documentElement.classList.add('dark');
+
+    const badge = document.getElementById('lovable-badge');
+    if (badge) {
+      badge.style.display = 'none';
+    }
     
     // Add scroll animation observer for all sections
     const observer = new IntersectionObserver(
