@@ -1,7 +1,6 @@
-
 import React, { useEffect, useRef } from 'react';
 import { Code, Users, Layers, Cloud, Brain } from 'lucide-react';
-import GradientBackground from './GradientBackground';
+import AIAnimatedBackground from './AIAnimatedBackground';
 
 type ExperienceItem = {
   title: string;
@@ -86,8 +85,8 @@ const About = () => {
 
   return (
     <section id="about" ref={sectionRef} className="relative py-20">
-      {/* Add the gradient background */}
-      <GradientBackground variant="secondary" />
+      {/* Replace GradientBackground with AIAnimatedBackground */}
+      <AIAnimatedBackground variant="secondary" />
       
       <div className="section-container relative z-10">
         <div className="text-center mb-16">
