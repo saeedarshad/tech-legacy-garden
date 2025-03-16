@@ -8,7 +8,7 @@ import Skills from '../components/Skills';
 import Projects from '../components/Projects';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
-import GradientBackground from '../components/GradientBackground';
+import AIAnimatedBackground from '../components/AIAnimatedBackground';
 
 const Index = () => {
   const [loading, setLoading] = useState(true);
@@ -52,7 +52,7 @@ const Index = () => {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <GradientBackground variant="dark" />
+            <AIAnimatedBackground variant="primary" />
             <motion.div
               className="flex flex-col items-center relative z-10"
               initial={{ opacity: 0 }}
@@ -109,6 +109,9 @@ const Index = () => {
             initial="hidden"
             animate="visible"
           >
+            {/* Main background that spans the entire site */}
+            <AIAnimatedBackground variant="primary" />
+            
             <motion.header variants={itemVariants} className="relative z-20">
               <Navbar />
             </motion.header>
@@ -116,19 +119,16 @@ const Index = () => {
               <Hero />
               <About />
               <section id="skills" className="relative py-20">
-                <GradientBackground variant="tertiary" />
                 <div className="relative z-10">
                   <Skills />
                 </div>
               </section>
               <section id="projects" className="relative py-20">
-                <GradientBackground variant="primary" />
                 <div className="relative z-10">
                   <Projects />
                 </div>
               </section>
               <section id="contact" className="relative py-20">
-                <GradientBackground variant="secondary" />
                 <div className="relative z-10">
                   <Contact />
                 </div>

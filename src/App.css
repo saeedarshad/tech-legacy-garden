@@ -42,18 +42,67 @@
   color: #888;
 }
 
-/* Glass effect for sections */
+/* Glass effect for sections - enhanced for AI theme */
 .glass-panel {
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.glass-panel:hover {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2);
 }
 
 .dark .glass-panel {
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.dark .glass-panel:hover {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* AI theme specifics */
+.ai-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2);
+}
+
+.ai-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to bottom right,
+    rgba(52, 152, 219, 0.1),
+    rgba(142, 68, 173, 0.1),
+    rgba(46, 204, 113, 0.1)
+  );
+  transform: rotate(30deg);
+  animation: shiftGradient 15s linear infinite;
+  z-index: -1;
+}
+
+@keyframes shiftGradient {
+  0% {
+    transform: rotate(30deg) translateY(0%);
+  }
+  50% {
+    transform: rotate(30deg) translateY(5%);
+  }
+  100% {
+    transform: rotate(30deg) translateY(0%);
+  }
 }
 
 /* Hide the Lovable badge */
