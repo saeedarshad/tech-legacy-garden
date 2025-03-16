@@ -115,15 +115,15 @@ const Hero = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.8 }}
           >
-            <a href="#" className="text-muted-foreground hover:text-primary transition-colors transform hover:scale-110 transition-transform duration-200">
+            <a href="https://github.com/saeedarshad" className="text-muted-foreground hover:text-primary transition-colors transform hover:scale-110 transition-transform duration-200" target='_blank'>
               <Github className="h-6 w-6" />
               <span className="sr-only">GitHub</span>
             </a>
-            <a href="#" className="text-muted-foreground hover:text-primary transition-colors transform hover:scale-110 transition-transform duration-200">
+            <a href="https://www.linkedin.com/in/saeedarshadd/" className="text-muted-foreground hover:text-primary transition-colors transform hover:scale-110 transition-transform duration-200" target='_blank'>
               <Linkedin className="h-6 w-6" />
               <span className="sr-only">LinkedIn</span>
             </a>
-            <a href="#" className="text-muted-foreground hover:text-primary transition-colors transform hover:scale-110 transition-transform duration-200">
+            <a href="mailto:m.saeedarshad95@gmail.com" className="text-muted-foreground hover:text-primary transition-colors transform hover:scale-110 transition-transform duration-200">
               <Mail className="h-6 w-6" />
               <span className="sr-only">Email</span>
             </a>
