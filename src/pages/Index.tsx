@@ -52,7 +52,7 @@ const Index = () => {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <AIAnimatedBackground variant="primary" />
+            <AIAnimatedBackground variant="secondary" />
             <motion.div
               className="flex flex-col items-center relative z-10"
               initial={{ opacity: 0 }}
@@ -110,7 +110,7 @@ const Index = () => {
             animate="visible"
           >
             {/* Main background that spans the entire site */}
-            <AIAnimatedBackground variant="primary" />
+            <AIAnimatedBackground variant="secondary" />
             
             <motion.header variants={itemVariants} className="relative z-20">
               <Navbar />
