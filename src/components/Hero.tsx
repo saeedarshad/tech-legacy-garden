@@ -2,7 +2,7 @@
 import React, { useEffect, useRef } from 'react';
 import { ArrowRight, Github, Linkedin, Mail } from 'lucide-react';
 import { motion } from 'framer-motion';
-import GradientBackground from './GradientBackground';
+import AIAnimatedBackground from './AIAnimatedBackground';
 
 const Hero = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -40,8 +40,8 @@ const Hero = () => {
 
   return (
     <section id="home" ref={sectionRef} className="relative min-h-screen flex items-center pt-16 overflow-hidden">
-      {/* Replace AnimatedBackground with GradientBackground */}
-      <GradientBackground variant="primary" />
+      {/* Use AIAnimatedBackground for hero section */}
+      <AIAnimatedBackground variant="secondary" />
       
       <div className="container mx-auto px-4 pt-20">
         <div className="max-w-4xl mx-auto">
