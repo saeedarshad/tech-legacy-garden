@@ -85,7 +85,7 @@ const Hero = () => {
             With 6 years of experience in Python/Django, Angular, AWS, and AI technologies, I create robust applications that transform complex challenges into elegant, intelligent solutions.
           </motion.p>
 
-          {/* Animated CTA buttons */}
+          {/* Animated CTA buttons with enhanced animations */}
           <motion.div 
             className="mt-8 flex flex-wrap gap-4 animate-on-scroll"
             initial={{ opacity: 0, y: 20 }}
@@ -94,36 +94,37 @@ const Hero = () => {
           >
             <a 
               href="#projects" 
-              className="inline-flex items-center justify-center px-6 py-3 bg-primary text-primary-foreground font-medium rounded-md transition-all hover:scale-105 hover:shadow-lg group"
+              className="inline-flex items-center justify-center px-6 py-3 bg-primary text-primary-foreground font-medium rounded-md transition-all duration-300 hover:scale-105 hover:shadow-lg group relative overflow-hidden"
             >
-              View Projects 
-              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-all duration-700 ease-in-out"></span>
+              <span className="relative z-10">View Projects</span>
+              <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
             </a>
             <a 
               href="#contact" 
-              className="inline-flex items-center justify-center px-6 py-3 bg-secondary text-secondary-foreground font-medium rounded-md transition-all hover:scale-105 hover:shadow-md relative overflow-hidden group"
+              className="inline-flex items-center justify-center px-6 py-3 bg-secondary text-secondary-foreground font-medium rounded-md transition-all duration-300 hover:scale-105 hover:shadow-md relative overflow-hidden group"
             >
               <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-all duration-700 ease-in-out"></span>
               <span className="relative z-10">Contact Me</span>
             </a>
           </motion.div>
 
-          {/* Social links with hover animations */}
+          {/* Social links with enhanced hover animations */}
           <motion.div 
             className="mt-12 flex items-center space-x-6 animate-on-scroll"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.8 }}
           >
-            <a href="https://github.com/saeedarshad" className="text-muted-foreground hover:text-primary transition-colors transform hover:scale-110 transition-transform duration-200" target='_blank'>
+            <a href="https://github.com/saeedarshad" className="text-muted-foreground hover:text-primary transition-colors duration-300 transform hover:scale-110 transition-transform" target='_blank'>
               <Github className="h-6 w-6" />
               <span className="sr-only">GitHub</span>
             </a>
-            <a href="https://www.linkedin.com/in/saeedarshadd/" className="text-muted-foreground hover:text-primary transition-colors transform hover:scale-110 transition-transform duration-200" target='_blank'>
+            <a href="https://www.linkedin.com/in/saeedarshadd/" className="text-muted-foreground hover:text-primary transition-colors duration-300 transform hover:scale-110 transition-transform" target='_blank'>
               <Linkedin className="h-6 w-6" />
               <span className="sr-only">LinkedIn</span>
             </a>
-            <a href="mailto:m.saeedarshad95@gmail.com" className="text-muted-foreground hover:text-primary transition-colors transform hover:scale-110 transition-transform duration-200">
+            <a href="mailto:m.saeedarshad95@gmail.com" className="text-muted-foreground hover:text-primary transition-colors duration-300 transform hover:scale-110 transition-transform">
               <Mail className="h-6 w-6" />
               <span className="sr-only">Email</span>
             </a>
