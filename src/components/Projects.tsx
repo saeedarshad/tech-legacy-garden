@@ -35,6 +35,14 @@ const Projects = () => {
       githubLink: "#"
     },
     {
+      title: "AI Powered Chatbot Widget",
+      description: "Embeddable AI chatbot that integrates into any website via iframe. Fully customizable (size, position, colors, fonts), supports user-selected AI models and BYO API keys, and can answer against a company knowledge base with strong reasoning.",
+      image: "/lovable-uploads/296faafa-fc78-4328-8806-511132ef72fb.png",
+      tags: ["AI", "Chatbot", "Embeddable", "Iframe", "Customization", "Multi-model", "Knowledge Base", "RAG", "Reasoning", "API Keys"],
+      demoLink: "#",
+      githubLink: "#"
+    },
+    {
       title: "E-Commerce Platform",
       description: "A full-stack e-commerce platform with an Angular frontend and Django backend. Features include user authentication, product catalog, shopping cart, and payment integration.",
       image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80",
