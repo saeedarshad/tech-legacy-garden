@@ -27,6 +27,14 @@ const Projects = () => {
       githubLink: "#"
     },
     {
+      title: "TSIM – Telehealth Service Implementation Model",
+      description: "Centralized and standardized framework to scale telehealth programs. Provides a framework to set up services, roadmap to scope/design/operationalize, operational CRM for multi‑site engagement, and knowledge sharing based on proven best practices.",
+      image: "/lovable-uploads/b3493824-b7fd-41f4-9e1f-e638e435c88f.png",
+      tags: ["AI", "Django", "Angular", "Python", "AWS", "Celery", "Healthcare", "CRM"],
+      demoLink: "#",
+      githubLink: "#"
+    },
+    {
       title: "E-Commerce Platform",
       description: "A full-stack e-commerce platform with an Angular frontend and Django backend. Features include user authentication, product catalog, shopping cart, and payment integration.",
       image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80",
