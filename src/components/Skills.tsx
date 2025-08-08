@@ -35,6 +35,7 @@ const Skills = () => {
   ];
 
   const aiSkills: Skill[] = [
+    { name: "AI chatbots", level: 100, icon: "devicon-tensorflow-plain" },
     { name: "Machine Learning", level: 85, icon: "devicon-tensorflow-plain" },
     { name: "NLP", level: 80, icon: "devicon-python-plain" },
     { name: "Computer Vision", level: 75, icon: "devicon-python-plain" },
