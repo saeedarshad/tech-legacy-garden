@@ -42,38 +42,6 @@ const Projects = () => {
       demoLink: "#",
       githubLink: "#"
     },
-    {
-      title: "E-Commerce Platform",
-      description: "A full-stack e-commerce platform with an Angular frontend and Django backend. Features include user authentication, product catalog, shopping cart, and payment integration.",
-      image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80",
-      tags: ["Angular", "Django", "PostgreSQL", "Payment Integration"],
-      demoLink: "#",
-      githubLink: "#"
-    },
-    {
-      title: "Task Management System",
-      description: "A collaborative task management system built with Angular and Django REST framework. Includes role-based access control, real-time updates, and detailed analytics.",
-      image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=800&q=80",
-      tags: ["Django", "Angular", "WebSockets", "Charts"],
-      demoLink: "#",
-      githubLink: "#"
-    },
-    {
-      title: "Healthcare Portal",
-      description: "A secure portal for healthcare providers built with Angular and Django. Features include appointment scheduling, patient records, and secure messaging.",
-      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=80",
-      tags: ["Healthcare", "Angular", "Django", "Security"],
-      demoLink: "#",
-      githubLink: "#"
-    },
-    {
-      title: "Real-Time Analytics Dashboard",
-      description: "An interactive dashboard for visualizing business metrics in real-time using Django, Angular, and WebSockets.",
-      image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=800&q=80",
-      tags: ["Data Visualization", "Django", "Angular", "WebSockets"],
-      demoLink: "#",
-      githubLink: "#"
-    },
   ];
 
   const allTags = Array.from(new Set(projects.flatMap(p => p.tags))).sort();
