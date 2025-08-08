@@ -19,6 +19,14 @@ const Projects = () => {
 
   const projects: Project[] = [
     {
+      title: "MediKnow - Medical Learning Platform",
+      description: "A comprehensive medical learning platform for students, doctors, nurses, and paramedics. AI tutor, AI quiz generation from articles, quiz duel, courses (PDF & in‑platform), org-level plans, gamification (XP, streaks, leaderboards), and secure Stripe billing.",
+      image: "/lovable-uploads/3482dbe9-4c9d-4e66-b73c-36cf1d9a3689.png",
+      tags: ["Django", "AI", "Stripe", "AWS S3", "Elasticsearch", "Gamification", "Education"],
+      demoLink: "https://mediknow.io/",
+      githubLink: "#"
+    },
+    {
       title: "E-Commerce Platform",
       description: "A full-stack e-commerce platform with an Angular frontend and Django backend. Features include user authentication, product catalog, shopping cart, and payment integration.",
       image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80",
@@ -52,7 +60,8 @@ const Projects = () => {
     },
   ];
 
-  const filters = ['all', 'Angular', 'Django', 'Data Visualization', 'Healthcare'];
+  const allTags = Array.from(new Set(projects.flatMap(p => p.tags))).sort();
+  const filters = ['all', ...allTags];
 
   const filteredProjects = activeFilter === 'all'
     ? projects
