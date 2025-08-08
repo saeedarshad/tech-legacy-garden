@@ -15,7 +15,7 @@ const Index = () => {
 
   // Preloader animation
   useEffect(() => {
-    document.title = 'Senior Software Engineer Portfolio';
+    document.title = 'Saeed Arshad';
     
     // Simulate loading time
     const timer = setTimeout(() => {
