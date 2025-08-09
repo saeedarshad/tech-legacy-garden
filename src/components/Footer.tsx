@@ -16,7 +16,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row items-center justify-between mb-8">
           {/* Logo */}
           <a href="#home" className="font-display text-xl font-bold mb-4 md:mb-0">
-            <span className="text-primary">&lt;/&gt;</span> <span>Saeed's Portfolio</span>
+            <span className="text-primary">&lt;/&gt;</span> <span>Saeed Arshad</span>
           </a>
 
           {/* Navigation */}

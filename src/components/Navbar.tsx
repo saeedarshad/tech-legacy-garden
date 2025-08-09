@@ -42,8 +42,8 @@ const Navbar = () => {
       <div className="container mx-auto px-4 flex items-center justify-between">
         {/* Logo */}
         <a href="#home" className="font-display text-xl font-bold">
-          <span className="sr-only">Developer Portfolio</span>
-          <span className="text-primary">&lt;/&gt;</span> <span>Saeed's Portfolio</span>
+          <span className="sr-only">Saeed Arshad</span>
+          <span className="text-primary">&lt;/&gt;</span> <span>Saeed Arshad</span>
         </a>
 
         {/* Desktop Navigation */}
