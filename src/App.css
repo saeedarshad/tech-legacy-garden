@@ -104,8 +104,3 @@
     transform: rotate(30deg) translateY(0%);
   }
 }
-
-/* Hide the Lovable badge */
-#lovable-badge {
-  display: none !important;
-}

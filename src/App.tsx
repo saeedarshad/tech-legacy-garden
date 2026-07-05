@@ -1,20 +1,19 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { Outlet, useLocation, type RouteObject } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
+import { useEffect } from "react";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
-import { useEffect } from "react";
 
 const queryClient = new QueryClient();
 
 // Animated page wrapper component
 const AnimatedPage = ({ children }: { children: React.ReactNode }) => {
   const location = useLocation();
-  
+
   return (
     <AnimatePresence mode="wait">
       <motion.div
@@ -30,16 +29,11 @@ const AnimatedPage = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-const App = () => {
+const Layout = () => {
   // Set dark mode by default
   useEffect(() => {
     document.documentElement.classList.add('dark');
 
-    const badge = document.getElementById('lovable-badge');
-    if (badge) {
-      badge.style.display = 'none';
-    }
-    
     // Add scroll animation observer for all sections
     const observer = new IntersectionObserver(
       (entries) => {
@@ -51,12 +45,11 @@ const App = () => {
       },
       { threshold: 0.1 }
     );
-    
-    // Observe all sections
+
     document.querySelectorAll('section').forEach(section => {
       observer.observe(section);
     });
-    
+
     return () => {
       document.querySelectorAll('section').forEach(section => {
         observer.unobserve(section);
@@ -69,24 +62,22 @@ const App = () => {
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={
-              <AnimatedPage>
-                <Index />
-              </AnimatedPage>
-            } />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={
-              <AnimatedPage>
-                <NotFound />
-              </AnimatedPage>
-            } />
-          </Routes>
-        </BrowserRouter>
+        <AnimatedPage>
+          <Outlet />
+        </AnimatedPage>
       </TooltipProvider>
     </QueryClientProvider>
   );
 };
 
-export default App;
+export const routes: RouteObject[] = [
+  {
+    path: "/",
+    element: <Layout />,
+    children: [
+      { index: true, element: <Index /> },
+      // ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE
+      { path: "*", element: <NotFound /> },
+    ],
+  },
+];
