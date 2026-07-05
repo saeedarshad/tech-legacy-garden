@@ -31,9 +31,12 @@
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
+    --brand: 17 78% 48%;
+    --brand-foreground: 0 0% 100%;
+
     --border: 240 5.9% 90%;
     --input: 240 5.9% 90%;
-    --ring: 142.1 76.2% 36.3%;
+    --ring: 17 78% 48%;
 
     --radius: 0.5rem;
 
@@ -48,33 +51,36 @@
   }
 
   .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
+    --background: 20 14% 8%;
+    --foreground: 30 12% 96%;
 
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
+    --card: 22 13% 11%;
+    --card-foreground: 30 12% 96%;
 
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 22 13% 11%;
+    --popover-foreground: 30 12% 96%;
 
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 5.9% 10%;
+    --primary: 18 88% 55%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 22 11% 16%;
+    --secondary-foreground: 30 12% 96%;
 
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
+    --muted: 22 11% 16%;
+    --muted-foreground: 28 10% 67%;
 
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
+    --accent: 22 11% 16%;
+    --accent-foreground: 30 12% 96%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 142.4 71.8% 29.2%;
+    --brand: 18 88% 55%;
+    --brand-foreground: 0 0% 100%;
+
+    --border: 24 10% 20%;
+    --input: 24 10% 20%;
+    --ring: 18 88% 55%;
     
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
@@ -101,41 +107,31 @@
 /* Custom utility classes */
 @layer components {
   .glass-card {
-    @apply bg-white/80 dark:bg-black/80 backdrop-blur-md border border-white/20 dark:border-black/20 shadow-sm transition-all duration-300 hover:shadow-md hover:border-white/30 dark:hover:border-white/10;
+    @apply relative rounded-xl border border-white/[0.08] bg-card/60 shadow-[0_1px_2px_0_theme(colors.black/40%)] backdrop-blur-xl backdrop-saturate-150 transition-colors duration-200 hover:border-brand/40;
   }
-  
+
   .nav-link {
-    @apply relative px-2 py-1 text-sm font-medium transition-colors hover:text-primary after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-primary after:transition-all hover:after:w-full;
+    @apply relative px-1 py-1 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground;
   }
-  
+
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.2em] text-brand;
+  }
+
   .section-title {
-    @apply text-3xl sm:text-4xl font-display font-bold tracking-tight relative inline-block after:content-[''] after:absolute after:-bottom-2 after:left-1/2 after:w-12 after:h-1 after:bg-primary/50 after:rounded-full after:transform after:-translate-x-1/2;
+    @apply text-3xl sm:text-4xl font-display font-semibold tracking-tight;
   }
-  
+
   .section-subtitle {
-    @apply text-lg sm:text-xl text-muted-foreground mt-6;
+    @apply text-base sm:text-lg text-muted-foreground mt-3 leading-relaxed;
   }
-  
+
   .section-container {
-    @apply container mx-auto px-4 py-16 sm:py-24;
+    @apply container mx-auto px-4 py-16 sm:py-20 max-w-5xl;
   }
-  
-  .skill-card {
-    @apply glass-card p-6 rounded-xl flex flex-col items-center justify-center transition-all duration-500 hover:translate-y-[-10px] hover:shadow-lg;
-  }
-  
+
   .project-card {
-    @apply glass-card rounded-xl overflow-hidden transition-all duration-500 hover:shadow-xl border;
-  }
-  
-  /* Enhanced button styling */
-  .btn-primary {
-    @apply relative overflow-hidden inline-flex items-center justify-center px-6 py-3 bg-primary text-primary-foreground font-medium rounded-md transition-all hover:bg-primary/90 hover:shadow-lg after:absolute after:inset-0 after:w-full after:h-full after:bg-white/20 after:transform after:-translate-x-full after:skew-x-12 hover:after:animate-shine;
-  }
-  
-  /* Glowing effect for cards */
-  .glow-on-hover {
-    @apply relative after:absolute after:inset-0 after:rounded-xl after:opacity-0 after:transition-opacity after:duration-500 after:bg-gradient-to-r after:from-primary/0 after:via-primary/30 after:to-primary/0 hover:after:opacity-100;
+    @apply glass-card overflow-hidden;
   }
 }
 

@@ -21,11 +21,11 @@ const Footer = () => {
 
           {/* Navigation */}
           <nav className="flex flex-wrap justify-center gap-6">
-            <a href="#home" className="text-muted-foreground hover:text-primary transition-colors">Home</a>
-            <a href="#about" className="text-muted-foreground hover:text-primary transition-colors">About</a>
-            <a href="#skills" className="text-muted-foreground hover:text-primary transition-colors">Skills</a>
-            <a href="#projects" className="text-muted-foreground hover:text-primary transition-colors">Projects</a>
-            <a href="#contact" className="text-muted-foreground hover:text-primary transition-colors">Contact</a>
+            <a href="#home" className="text-muted-foreground hover:text-foreground transition-colors">Home</a>
+            <a href="#experience" className="text-muted-foreground hover:text-foreground transition-colors">Experience</a>
+            <a href="#skills" className="text-muted-foreground hover:text-foreground transition-colors">Skills</a>
+            <a href="#projects" className="text-muted-foreground hover:text-foreground transition-colors">Projects</a>
+            <a href="#contact" className="text-muted-foreground hover:text-foreground transition-colors">Contact</a>
           </nav>
 
           {/* Social Links */}

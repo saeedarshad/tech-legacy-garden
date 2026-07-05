@@ -1,158 +1,116 @@
-
-import React, { useEffect, useRef } from 'react';
-import { ArrowRight, Github, Linkedin, Mail } from 'lucide-react';
+import React from 'react';
+import { ArrowRight, Download, Github, Linkedin, Mail, Globe } from 'lucide-react';
 import { motion } from 'framer-motion';
-import AIAnimatedBackground from './AIAnimatedBackground';
+
+const coreStack = ['Python / Django', 'Angular', 'AWS', 'LLMs / AI'];
 
 const Hero = () => {
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    // Advanced animation sequence
-    const animateElements = () => {
-      const elements = sectionRef.current?.querySelectorAll('.animate-on-scroll');
-      elements?.forEach((element, index) => {
-        // Create staggered animation effect
-        (element as HTMLElement).style.animationDelay = `${0.2 * index}s`;
-        (element as HTMLElement).style.opacity = '0';
-        
-        // Use IntersectionObserver for more reliable animations
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('animate-fade-in');
-              observer.unobserve(entry.target);
-            }
-          });
-        }, { threshold: 0.1 });
-        
-        observer.observe(element);
-      });
-    };
-
-    // Run animation after component mount
-    setTimeout(animateElements, 100);
-
-    return () => {
-      window.removeEventListener('mousemove', () => {});
-    };
-  }, []);
-
   return (
-    <section id="home" ref={sectionRef} className="relative min-h-screen flex items-center pt-16 overflow-hidden">
-      {/* Use AIAnimatedBackground for hero section */}
-      <AIAnimatedBackground variant="secondary" />
-      
-      <div className="container mx-auto px-4 pt-20">
-        <div className="max-w-4xl mx-auto">
-          {/* Improved intro tag with shimmer effect */}
-          <div className="inline-block animate-on-scroll relative overflow-hidden group">
-            <span className="px-3 py-1 text-sm font-medium bg-primary/10 rounded-full inline-block relative z-10">
-              Saeed Arshad - Senior Software Engineer
+    <section
+      id="home"
+      className="relative flex min-h-[92vh] items-center pt-16 overflow-hidden"
+    >
+      <div className="section-container w-full">
+        <motion.div
+          className="max-w-3xl"
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          {/* Availability status */}
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-secondary/40 px-3 py-1 text-sm">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
             </span>
-            <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-all duration-1500 ease-in-out z-0"></span>
+            <span className="text-muted-foreground">
+              Open to Senior / Lead roles · Remote
+            </span>
           </div>
 
-          {/* Enhanced heading with text reveal animation */}
-          <motion.h1 
-            className="mt-6 text-4xl md:text-6xl lg:text-7xl font-display font-bold tracking-tight animate-on-scroll"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <motion.span 
-              className="inline-block bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-300 dark:from-white dark:to-gray-400"
-              animate={{ 
-                backgroundPosition: ['0% center', '100% center', '0% center'],
-              }}
-              transition={{ 
-                duration: 10, 
-                repeat: Infinity,
-                ease: "linear" 
-              }}
-            >
-              Building scalable AI-powered solutions
-            </motion.span>
-          </motion.h1>
+          <p className="eyebrow mb-4">
+            Senior / Lead Software Engineer · AI + Full-Stack
+          </p>
 
-          {/* Subtle fade-in subtitle */}
-          <motion.p 
-            className="mt-6 text-xl md:text-2xl text-muted-foreground animate-on-scroll"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            With 6 years of experience in Python/Django, Angular, AWS, and AI technologies, I create robust applications that transform complex challenges into elegant, intelligent solutions.
-          </motion.p>
+          <h1 className="text-4xl md:text-6xl font-display font-semibold tracking-tight leading-[1.05]">
+            Saeed Arshad
+          </h1>
 
-          {/* Animated CTA buttons with enhanced animations */}
-          <motion.div 
-            className="mt-8 flex flex-wrap gap-4 animate-on-scroll"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-          >
-            <a 
-              href="#projects" 
-              className="inline-flex items-center justify-center px-6 py-3 bg-primary text-primary-foreground font-medium rounded-md transition-all duration-300 hover:scale-105 hover:shadow-lg group relative overflow-hidden"
+          <p className="mt-6 text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl">
+            I build AI products in healthtech and edtech. Recent work spans LLM
+            chatbots, telehealth platforms, and medical education tools.
+          </p>
+
+          {/* Core stack */}
+          <div className="mt-6 flex flex-wrap gap-2">
+            {coreStack.map((tech) => (
+              <span
+                key={tech}
+                className="rounded-md border border-border bg-secondary/40 px-3 py-1 text-sm font-medium text-muted-foreground"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+
+          {/* Meta */}
+          <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-muted-foreground">
+            <span>7.5+ years experience</span>
+            <span className="hidden sm:inline text-border">|</span>
+            <span className="inline-flex items-center gap-1.5">
+              <Globe className="h-4 w-4" />
+              Remote · Available across all time zones
+            </span>
+          </div>
+
+          <div className="mt-9 flex flex-wrap items-center gap-3">
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
             >
-              <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-all duration-700 ease-in-out"></span>
-              <span className="relative z-10">View Projects</span>
-              <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+              <Download className="mr-2 h-4 w-4" />
+              Download Resume
             </a>
-            <a 
-              href="#contact" 
-              className="inline-flex items-center justify-center px-6 py-3 bg-secondary text-secondary-foreground font-medium rounded-md transition-all duration-300 hover:scale-105 hover:shadow-md relative overflow-hidden group"
+            <a
+              href="#projects"
+              className="inline-flex items-center justify-center rounded-md border border-border px-5 py-2.5 text-sm font-medium transition-colors hover:bg-secondary"
             >
-              <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-all duration-700 ease-in-out"></span>
-              <span className="relative z-10">Contact Me</span>
+              View Work
+              <ArrowRight className="ml-2 h-4 w-4" />
             </a>
-          </motion.div>
+          </div>
 
-          {/* Social links with enhanced hover animations */}
-          <motion.div 
-            className="mt-12 flex items-center space-x-6 animate-on-scroll"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-          >
-            <a href="https://github.com/saeedarshad" className="text-muted-foreground hover:text-primary transition-colors duration-300 transform hover:scale-110 transition-transform" target='_blank'>
-              <Github className="h-6 w-6" />
+          <div className="mt-10 flex items-center gap-5">
+            <a
+              href="https://github.com/saeedarshad"
+              className="text-muted-foreground transition-colors hover:text-foreground"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Github className="h-5 w-5" />
               <span className="sr-only">GitHub</span>
             </a>
-            <a href="https://www.linkedin.com/in/saeedarshadd/" className="text-muted-foreground hover:text-primary transition-colors duration-300 transform hover:scale-110 transition-transform" target='_blank'>
-              <Linkedin className="h-6 w-6" />
+            <a
+              href="https://www.linkedin.com/in/saeedarshadd/"
+              className="text-muted-foreground transition-colors hover:text-foreground"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Linkedin className="h-5 w-5" />
               <span className="sr-only">LinkedIn</span>
             </a>
-            <a href="mailto:m.saeedarshad95@gmail.com" className="text-muted-foreground hover:text-primary transition-colors duration-300 transform hover:scale-110 transition-transform">
-              <Mail className="h-6 w-6" />
+            <a
+              href="mailto:m.saeedarshad95@gmail.com"
+              className="text-muted-foreground transition-colors hover:text-foreground"
+            >
+              <Mail className="h-5 w-5" />
               <span className="sr-only">Email</span>
             </a>
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </div>
-
-      {/* Animated scroll indicator */}
-      <motion.div 
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 1 }}
-      >
-        <span className="text-sm text-muted-foreground mb-2">Scroll Down</span>
-        <motion.div 
-          className="w-0.5 h-12 bg-gradient-to-b from-muted-foreground to-transparent"
-          animate={{ 
-            scaleY: [0.5, 1, 0.5],
-            opacity: [0.3, 1, 0.3],
-          }}
-          transition={{ 
-            duration: 2, 
-            repeat: Infinity,
-            ease: "easeInOut" 
-          }}
-        />
-      </motion.div>
     </section>
   );
 };

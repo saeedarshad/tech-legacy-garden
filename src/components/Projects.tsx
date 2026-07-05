@@ -1,222 +1,122 @@
-
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import { ArrowUpRight, Github } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
 
 type Project = {
   title: string;
   description: string;
   image: string;
   tags: string[];
-  demoLink: string;
-  githubLink: string;
+  demoLink?: string;
+  githubLink?: string;
 };
 
+const projects: Project[] = [
+  {
+    title: 'Edge Node: Pipeline Integrity Monitoring',
+    description:
+      'A platform that visualises guided-wave ultrasonic sensor data for pipeline corrosion monitoring. Built solo from scratch: position-by-date heatmaps, pipe schematics with cross-chart sync, an offline-aware GIS location map, threshold-driven analytical charts, and a full RBAC-gated administration suite.',
+    image: '/portfolio-uploads/edge-node.png',
+    tags: ['Angular 21', 'Highcharts', 'PrimeNG', 'ArcGIS', 'RBAC'],
+  },
+  {
+    title: 'MediKnow: Medical Learning Platform',
+    description:
+      'A learning platform for medical students, doctors, and paramedics. AI tutor, AI quiz generation from articles, quiz duels, courses, org-level plans, gamification, and secure Stripe billing.',
+    image: '/portfolio-uploads/3482dbe9-4c9d-4e66-b73c-36cf1d9a3689.png',
+    tags: ['Django', 'AI', 'Stripe', 'Elasticsearch', 'AWS S3'],
+    demoLink: 'https://mediknow.io/',
+  },
+  {
+    title: 'TSIM: Telehealth Service Implementation Model',
+    description:
+      'A centralized framework to scale telehealth programs: service setup, a roadmap to scope and operationalize, an operational CRM for multi-site engagement, and best-practice knowledge sharing.',
+    image: '/portfolio-uploads/b3493824-b7fd-41f4-9e1f-e638e435c88f.png',
+    tags: ['Angular', 'Django', 'AWS', 'Celery', 'Healthcare'],
+  },
+  {
+    title: 'AI-Powered Chatbot Widget',
+    description:
+      'An embeddable AI chatbot that drops into any website via iframe. Fully customizable, supports user-selected models and bring-your-own API keys, and answers against a company knowledge base with strong reasoning.',
+    image: '/portfolio-uploads/296faafa-fc78-4328-8806-511132ef72fb.png',
+    tags: ['AI', 'RAG', 'Embeddable', 'Multi-model', 'Knowledge Base'],
+  },
+];
+
 const Projects = () => {
-  const sectionRef = useRef<HTMLElement>(null);
-  const [activeFilter, setActiveFilter] = useState<string>('all');
-  const [isVisible, setIsVisible] = useState(false);
-
-  const projects: Project[] = [
-    {
-      title: "MediKnow - Medical Learning Platform",
-      description: "A comprehensive medical learning platform for students, doctors, nurses, and paramedics. AI tutor, AI quiz generation from articles, quiz duel, courses (PDF & in‑platform), org-level plans, gamification (XP, streaks, leaderboards), and secure Stripe billing.",
-      image: "/lovable-uploads/3482dbe9-4c9d-4e66-b73c-36cf1d9a3689.png",
-      tags: ["Django", "AI", "Stripe", "AWS S3", "Elasticsearch", "Gamification", "Education"],
-      demoLink: "https://mediknow.io/",
-      githubLink: "#"
-    },
-    {
-      title: "TSIM – Telehealth Service Implementation Model",
-      description: "Centralized and standardized framework to scale telehealth programs. Provides a framework to set up services, roadmap to scope/design/operationalize, operational CRM for multi‑site engagement, and knowledge sharing based on proven best practices.",
-      image: "/lovable-uploads/b3493824-b7fd-41f4-9e1f-e638e435c88f.png",
-      tags: ["AI", "Django", "Angular", "Python", "AWS", "Celery", "Healthcare", "CRM"],
-      demoLink: "#",
-      githubLink: "#"
-    },
-    {
-      title: "AI Powered Chatbot Widget",
-      description: "Embeddable AI chatbot that integrates into any website via iframe. Fully customizable (size, position, colors, fonts), supports user-selected AI models and BYO API keys, and can answer against a company knowledge base with strong reasoning.",
-      image: "/lovable-uploads/296faafa-fc78-4328-8806-511132ef72fb.png",
-      tags: ["AI", "Chatbot", "Embeddable", "Iframe", "Customization", "Multi-model", "Knowledge Base", "RAG", "Reasoning", "API Keys"],
-      demoLink: "#",
-      githubLink: "#"
-    },
-  ];
-
-  const allTags = Array.from(new Set(projects.flatMap(p => p.tags))).sort();
-  const filters = ['all', ...allTags];
-
-  const filteredProjects = activeFilter === 'all'
-    ? projects
-    : projects.filter(project => project.tags.includes(activeFilter));
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
-
-  // Animation variants for staggered animations
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { 
-      opacity: 1, 
-      transition: { 
-        staggerChildren: 0.1,
-        delayChildren: 0.2
-      } 
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: { duration: 0.5, ease: "easeOut" }
-    }
-  };
-
-  const filterVariants = {
-    hover: { scale: 1.05, transition: { duration: 0.2 } },
-    tap: { scale: 0.95 }
-  };
-
   return (
-    <section id="projects" ref={sectionRef} className="py-20 bg-secondary/30 overflow-hidden">
+    <section id="projects" className="relative border-y border-border/70 bg-card/40">
       <div className="section-container">
-        <motion.div 
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.6 }}
-        >
-          <h2 className="section-title">Featured Projects</h2>
-          <p className="section-subtitle max-w-2xl mx-auto">
-            A selection of projects showcasing my expertise in Python/Django and Angular development.
+        <div className="mb-12">
+          <p className="eyebrow mb-3">Projects</p>
+          <h2 className="section-title">Selected work</h2>
+          <p className="section-subtitle max-w-2xl">
+            A few projects that show how I build AI-powered products end to end.
           </p>
-        </motion.div>
+        </div>
 
-        {/* Project Filters */}
-        <motion.div 
-          className="flex flex-wrap justify-center mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-        >
-          {filters.map((filter, index) => (
-            <motion.button
-              key={filter}
-              onClick={() => setActiveFilter(filter)}
-              className={`px-4 py-2 m-1 rounded-full text-sm font-medium transition-all ${
-                activeFilter === filter
-                  ? 'bg-primary text-primary-foreground'
-                  : 'bg-secondary text-secondary-foreground hover:bg-secondary/70'
-              }`}
-              variants={filterVariants}
-              whileHover="hover"
-              whileTap="tap"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 * index, duration: 0.3 }}
-            >
-              {filter === 'all' ? 'All Projects' : filter}
-            </motion.button>
-          ))}
-        </motion.div>
+        <div className="grid gap-6 md:grid-cols-2">
+          {projects.map((project) => {
+            const hasDemo = project.demoLink && project.demoLink !== '#';
+            const hasGithub = project.githubLink && project.githubLink !== '#';
 
-        {/* Projects Grid */}
-        <AnimatePresence mode="wait">
-          <motion.div 
-            className="grid md:grid-cols-2 gap-8"
-            key={activeFilter}
-            variants={containerVariants}
-            initial="hidden"
-            animate={isVisible ? "visible" : "hidden"}
-            exit={{ opacity: 0, transition: { duration: 0.2 } }}
-          >
-            {filteredProjects.map((project, index) => (
-              <motion.div 
-                key={`${activeFilter}-${index}`}
-                className="project-card relative group"
-                variants={itemVariants}
-                whileHover={{ y: -8, transition: { duration: 0.3 } }}
-              >
-                {/* Project Image with hover effect */}
-                <div className="relative overflow-hidden" style={{ height: '240px' }}>
-                  <motion.img 
-                    src={project.image} 
+            return (
+              <div key={project.title} className="project-card group">
+                <div className="relative h-56 overflow-hidden border-b border-border">
+                  <img
+                    src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover"
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ duration: 0.5 }}
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
-                
-                {/* Project Info */}
+
                 <div className="p-6">
-                  <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors duration-300">{project.title}</h3>
-                  <p className="text-muted-foreground mb-4">{project.description}</p>
-                  
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tags.map((tag, tagIndex) => (
-                      <span 
-                        key={tagIndex}
-                        className="px-2 py-1 bg-secondary rounded-full text-xs font-medium"
+                  <h3 className="text-lg font-semibold">{project.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    {project.description}
+                  </p>
+
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {project.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="rounded-md border border-border px-2 py-1 text-xs font-medium text-muted-foreground"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
-                  
-                  {/* Action Links */}
-                  <motion.div 
-                    className="flex items-center space-x-4 mt-4"
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.3 + (0.1 * index) }}
-                  >
-                    <a 
-                      href={project.demoLink}
-                      className="inline-flex items-center text-sm font-medium text-primary hover:underline group"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Live Demo 
-                      <ArrowUpRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                    </a>
-                    <a 
-                      href={project.githubLink}
-                      className="inline-flex items-center text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Source Code <Github className="ml-1 h-4 w-4 transition-transform group-hover:rotate-6" />
-                    </a>
-                  </motion.div>
+
+                  {(hasDemo || hasGithub) && (
+                    <div className="mt-5 flex items-center gap-5">
+                      {hasDemo && (
+                        <a
+                          href={project.demoLink}
+                          className="inline-flex items-center text-sm font-medium hover:underline"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Live Site
+                          <ArrowUpRight className="ml-1 h-4 w-4" />
+                        </a>
+                      )}
+                      {hasGithub && (
+                        <a
+                          href={project.githubLink}
+                          className="inline-flex items-center text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Source
+                          <Github className="ml-1 h-4 w-4" />
+                        </a>
+                      )}
+                    </div>
+                  )}
                 </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </AnimatePresence>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

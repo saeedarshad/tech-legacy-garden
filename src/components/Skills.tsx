@@ -1,240 +1,65 @@
+import React from 'react';
 
-import React, { useEffect, useRef } from 'react';
-
-type Skill = {
-  name: string;
-  level: number; // 1-100
-  icon: string;
+type SkillGroup = {
+  category: string;
+  items: string[];
 };
 
+const skillGroups: SkillGroup[] = [
+  {
+    category: 'Backend',
+    items: ['Python', 'Django', 'REST APIs', 'PostgreSQL', 'Celery', 'Docker'],
+  },
+  {
+    category: 'Frontend',
+    items: ['Angular', 'TypeScript', 'JavaScript', 'HTML5 / CSS3', 'SCSS'],
+  },
+  {
+    category: 'Cloud & DevOps',
+    items: ['AWS (EC2, S3, Lambda)', 'CI/CD', 'Git / GitHub', 'Sentry'],
+  },
+  {
+    category: 'AI & Data',
+    items: [
+      'LLM Integration',
+      'Chatbots / RAG',
+      'Machine Learning',
+      'NLP',
+      'Data Analysis',
+    ],
+  },
+];
+
 const Skills = () => {
-  const sectionRef = useRef<HTMLElement>(null);
-
-  const frontendSkills: Skill[] = [
-    { name: "Angular", level: 90, icon: "devicon-angularjs-plain" },
-    { name: "TypeScript", level: 85, icon: "devicon-typescript-plain" },
-    { name: "HTML5/CSS3", level: 90, icon: "devicon-html5-plain" },
-    { name: "JavaScript", level: 85, icon: "devicon-javascript-plain" },
-    { name: "SCSS/SASS", level: 80, icon: "devicon-sass-original" }
-  ];
-
-  const backendSkills: Skill[] = [
-    { name: "Python", level: 95, icon: "devicon-python-plain" },
-    { name: "Django", level: 90, icon: "devicon-django-plain" },
-    { name: "PostgreSQL", level: 85, icon: "devicon-postgresql-plain" },
-    { name: "RESTful APIs", level: 90, icon: "devicon-nodejs-plain" },
-    { name: "Docker", level: 85, icon: "devicon-docker-plain" }
-  ];
-
-  const awsSkills: Skill[] = [
-    { name: "AWS EC2", level: 90, icon: "devicon-amazonwebservices-plain" },
-    { name: "AWS Lambda", level: 85, icon: "devicon-amazonwebservices-plain" },
-    { name: "AWS S3", level: 90, icon: "devicon-amazonwebservices-plain" },
-    { name: "AWS SageMaker", level: 80, icon: "devicon-amazonwebservices-plain" },
-    { name: "AWS CloudFormation", level: 75, icon: "devicon-amazonwebservices-plain" }
-  ];
-
-  const aiSkills: Skill[] = [
-    { name: "AI chatbots", level: 100, icon: "devicon-tensorflow-plain" },
-    { name: "Machine Learning", level: 85, icon: "devicon-tensorflow-plain" },
-    { name: "NLP", level: 80, icon: "devicon-python-plain" },
-    { name: "Computer Vision", level: 75, icon: "devicon-python-plain" },
-    { name: "Deep Learning", level: 80, icon: "devicon-tensorflow-plain" },
-    { name: "Data Analysis", level: 85, icon: "devicon-pandas-original" }
-  ];
-
-  const otherSkills: string[] = [
-    "Git/GitHub", "CI/CD", "Agile/Scrum", "Unit Testing", "System Design", 
-    "AWS", "Performance Optimization", "Team Leadership", "MLOps", "Kubernetes"
-  ];
-
-  useEffect(() => {
-    // Add the devicon stylesheet to the document head
-    const link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css';
-    document.head.appendChild(link);
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const elements = entry.target.querySelectorAll('.animate-on-scroll');
-            elements.forEach((element, index) => {
-              (element as HTMLElement).style.animationDelay = `${0.1 * index}s`;
-              element.classList.add('animate-fade-in');
-            });
-
-            // After a delay, animate the skill bars
-            setTimeout(() => {
-              const bars = entry.target.querySelectorAll('.skill-bar-progress');
-              bars.forEach((bar) => {
-                (bar as HTMLElement).style.width = bar.getAttribute('data-width') || '0%';
-              });
-            }, 500);
-            
-            // Only unobserve after animation is complete
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-      document.head.removeChild(link);
-    };
-  }, []);
-
   return (
-    <section id="skills" ref={sectionRef} className="py-20">
+    <section id="skills" className="relative">
       <div className="section-container">
-        <div className="text-center mb-16">
-          <h2 className="section-title animate-on-scroll opacity-0">Skills & Expertise</h2>
-          <p className="section-subtitle animate-on-scroll opacity-0 max-w-2xl mx-auto">
-            My technical skills and areas of expertise developed over 6+ years in software engineering, cloud computing, and artificial intelligence.
+        <div className="mb-12">
+          <p className="eyebrow mb-3">Skills</p>
+          <h2 className="section-title">Tools I work with</h2>
+          <p className="section-subtitle max-w-2xl">
+            The technologies I use most across backend, frontend, cloud, and AI.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-10">
-          {/* Frontend Skills */}
-          <div className="animate-on-scroll opacity-0">
-            <h3 className="text-2xl font-bold mb-6 flex items-center">
-              <span className="mr-2">Frontend</span>
-              <div className="h-px flex-grow bg-border"></div>
-            </h3>
-            <div className="space-y-6">
-              {frontendSkills.map((skill, index) => (
-                <div key={index}>
-                  <div className="flex justify-between items-center mb-2">
-                    <div className="flex items-center">
-                      <i className={`${skill.icon} text-xl mr-2`}></i>
-                      <span className="font-medium">{skill.name}</span>
-                    </div>
-                    <span className="text-sm text-muted-foreground">{skill.level}%</span>
-                  </div>
-                  <div className="h-2 bg-secondary rounded-full overflow-hidden">
-                    <div 
-                      className="skill-bar-progress h-full bg-primary rounded-full transition-all duration-1000 ease-out"
-                      data-width={`${skill.level}%`}
-                      style={{ width: '0%' }}
-                    ></div>
-                  </div>
-                </div>
-              ))}
+        <div className="grid gap-5 sm:grid-cols-2">
+          {skillGroups.map((group) => (
+            <div key={group.category} className="glass-card p-6">
+              <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+                {group.category}
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {group.items.map((item) => (
+                  <span
+                    key={item}
+                    className="rounded-md border border-border bg-secondary/50 px-3 py-1.5 text-sm font-medium"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
             </div>
-          </div>
-
-          {/* Backend Skills */}
-          <div className="animate-on-scroll opacity-0">
-            <h3 className="text-2xl font-bold mb-6 flex items-center">
-              <span className="mr-2">Backend</span>
-              <div className="h-px flex-grow bg-border"></div>
-            </h3>
-            <div className="space-y-6">
-              {backendSkills.map((skill, index) => (
-                <div key={index}>
-                  <div className="flex justify-between items-center mb-2">
-                    <div className="flex items-center">
-                      <i className={`${skill.icon} text-xl mr-2`}></i>
-                      <span className="font-medium">{skill.name}</span>
-                    </div>
-                    <span className="text-sm text-muted-foreground">{skill.level}%</span>
-                  </div>
-                  <div className="h-2 bg-secondary rounded-full overflow-hidden">
-                    <div 
-                      className="skill-bar-progress h-full bg-primary rounded-full transition-all duration-1000 ease-out"
-                      data-width={`${skill.level}%`}
-                      style={{ width: '0%' }}
-                    ></div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-10 mt-16">
-          {/* AWS Skills */}
-          <div className="animate-on-scroll opacity-0">
-            <h3 className="text-2xl font-bold mb-6 flex items-center">
-              <span className="mr-2">AWS Cloud</span>
-              <div className="h-px flex-grow bg-border"></div>
-            </h3>
-            <div className="space-y-6">
-              {awsSkills.map((skill, index) => (
-                <div key={index}>
-                  <div className="flex justify-between items-center mb-2">
-                    <div className="flex items-center">
-                      <i className={`${skill.icon} text-xl mr-2`}></i>
-                      <span className="font-medium">{skill.name}</span>
-                    </div>
-                    <span className="text-sm text-muted-foreground">{skill.level}%</span>
-                  </div>
-                  <div className="h-2 bg-secondary rounded-full overflow-hidden">
-                    <div 
-                      className="skill-bar-progress h-full bg-primary rounded-full transition-all duration-1000 ease-out"
-                      data-width={`${skill.level}%`}
-                      style={{ width: '0%' }}
-                    ></div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* AI Skills */}
-          <div className="animate-on-scroll opacity-0">
-            <h3 className="text-2xl font-bold mb-6 flex items-center">
-              <span className="mr-2">AI & Machine Learning</span>
-              <div className="h-px flex-grow bg-border"></div>
-            </h3>
-            <div className="space-y-6">
-              {aiSkills.map((skill, index) => (
-                <div key={index}>
-                  <div className="flex justify-between items-center mb-2">
-                    <div className="flex items-center">
-                      <i className={`${skill.icon} text-xl mr-2`}></i>
-                      <span className="font-medium">{skill.name}</span>
-                    </div>
-                    <span className="text-sm text-muted-foreground">{skill.level}%</span>
-                  </div>
-                  <div className="h-2 bg-secondary rounded-full overflow-hidden">
-                    <div 
-                      className="skill-bar-progress h-full bg-primary rounded-full transition-all duration-1000 ease-out"
-                      data-width={`${skill.level}%`}
-                      style={{ width: '0%' }}
-                    ></div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Other Skills */}
-        <div className="mt-16 animate-on-scroll opacity-0">
-          <h3 className="text-2xl font-bold mb-6 flex items-center">
-            <span className="mr-2">Other Skills</span>
-            <div className="h-px flex-grow bg-border"></div>
-          </h3>
-          <div className="flex flex-wrap gap-3">
-            {otherSkills.map((skill, index) => (
-              <span 
-                key={index}
-                className="px-4 py-2 bg-secondary rounded-full text-sm font-medium"
-              >
-                {skill}
-              </span>
-            ))}
-          </div>
+          ))}
         </div>
       </div>
     </section>
